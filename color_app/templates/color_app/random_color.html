@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+  {{ block.super }}
+  <title>COLORAMA</title>
+  <style>
+    body {
+      background-color: {{color.inverted.hex_code}};
+    }
+    a {
+      color: {{color.hex_code}};
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col text-center">
+      <h1>Random color</h1>
+			<p>
+			  Do you like it? If not, 
+				<a href="{% url 'color_app:random_color' %}">choose another</a>.
+			</p>
+      {% include "color_app/swatch.html" %}
+    </div>
+  </div>
+{% endblock %}
+

@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "mysite"
+version = "0.1.0"
+description = ""
+authors = ["emma <eqbrown@isf.edu.hk>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Django = "^4.1.7"
+django-crispy-forms = "^2.0"
+crispy-bootstrap4 = "^2022.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

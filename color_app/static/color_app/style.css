@@ -1,0 +1,34 @@
+body{
+}
+
+#main {
+}
+
+.navbar {
+  color: white;
+	background-color: black;
+}
+footer {
+  color: white;
+	background-color: black;
+	padding: 4px;
+}
+
+.site-name {
+  font-size: 1.4em;
+}
+.site-slogan {
+  font-style: italic;
+}
+svg {
+	display: block;
+	margin: 0 auto;
+}
+.swatches {
+  display: flex;
+	flex-wrap: wrap;
+	margin-top: 28px;
+}
+.swatch {
+  margin-top: -28px;
+}

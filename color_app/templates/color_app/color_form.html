@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <div class="row">
+    <div class="col text-center">
+      <h1>Add a new color</h1>
+			<form method="post">
+				{% csrf_token %}
+    	  {{ form | crispy }}
+				<input type="submit" value="Submit">
+			</form>
+			{% include "color_app/swatch.html" %}
+    </div>
+	  <script>
+			const redSlider = document.getElementById('id_red')
+			const greenSlider = document.getElementById('id_green')
+			const blueSlider = document.getElementById('id_blue')
+			const swatch = document.getElementsByTagName('circle')[0]
+			const body = document.getElementsByTagName('body')[0]
+			function hex(num) {
+				const hexnum = parseInt(num).toString(16)
+				return (hexnum.length == 2) ? hexnum : "0" + hexnum
+		  }
+		  function cssColor(red, green, blue) {
+				return '#' + hex(red) + hex(green) + hex(blue)
+			}
+			function updateSwatch() {
+				const swatchColor = cssColor(redSlider.value, greenSlider.value, blueSlider.value)
+				const bgColor = cssColor(255 - redSlider.value, 255 - greenSlider.value, 255 - blueSlider.value)
+				swatch.style['fill'] = swatchColor
+				body.style['background-color'] = bgColor
+				body.style['color'] = swatchColor
+			}
+			redSlider.addEventListener('input', updateSwatch)
+			greenSlider.addEventListener('input', updateSwatch)
+			blueSlider.addEventListener('input', updateSwatch)
+			updateSwatch()
+	  </script>
+  </div>
+
+{% endblock %}
+
