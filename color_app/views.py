@@ -17,7 +17,7 @@ def home_view(request):
     skyblue = Color(name="skyblue", red=135, green=206, blue=250)
 
     params = {
-        "name": "stranger",
+        "name": "mufinized",
         "color": skyblue,
     }
     
@@ -34,9 +34,18 @@ def random_color_view(request):
         blue=randint(0, 256)
     )
 
-    params = {"color": random_color}
+    params = {"color": random_color, "name": "mufinized"}
 
-    return render(request, 'color_app/random_color.html', params)
+    return render(request, 'color_app/index.html', params)
+
+
+def color_list(request):
+    "A view function which renders a random color"
+
+
+
+    return render(request, 'color_app/color_list.html', {})
+
 
 #######################
 # Class Based Views
@@ -45,7 +54,7 @@ def random_color_view(request):
 class ColorListView(ListView):
     model = Color
     template_name = "color_app/color_list.html"
-    queryset = Color.objects.order_by("name")
+    queryset = Color.objects.order_by("red").reverse()
 
 class NewColorView(CreateView):
     model = Color
