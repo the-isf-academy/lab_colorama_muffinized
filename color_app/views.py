@@ -54,7 +54,7 @@ def color_list(request):
 class ColorListView(ListView):
     model = Color
     template_name = "color_app/color_list.html"
-    queryset = Color.objects.order_by("red").reverse()
+    queryset = Color.objects.order_by(*["red", "blue", "green"]).reverse()
 
 class NewColorView(CreateView):
     model = Color
